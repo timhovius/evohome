@@ -1,27 +1,21 @@
 package com.evohome.thermostat.service;
 
 import com.evohome.thermostat.honeywell.response.*;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.client.RestTemplate;
 
 import java.time.ZonedDateTime;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ThermostatServiceTest {
-    private ThermostatService thermostatService;
 
-    @Before
-    public void setUp() {
-        thermostatService = new ThermostatService(new RestTemplate());
-    }
+    @Autowired
+    private ThermostatService thermostatService;
 
     @Test
     public void getUserAccount() {
