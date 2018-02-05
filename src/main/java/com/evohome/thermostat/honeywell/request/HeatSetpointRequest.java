@@ -8,8 +8,9 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 
 import java.time.ZonedDateTime;
+import java.util.Optional;
 
-public class HeatSetpointRequest implements Request<HeatSetpoint> {
+public class HeatSetpointRequest implements Request<HeatSetpoint, HeatSetpointBody> {
     private final Zone zone;
     private final double temperature;
     private final ZonedDateTime timeUntil;
@@ -31,8 +32,8 @@ public class HeatSetpointRequest implements Request<HeatSetpoint> {
     }
 
     @Override
-    public HeatSetpointBody getBody() {
-        return new HeatSetpointBody(temperature, SetpointMode.TEMPORARY_OVERRIDE, timeUntil);
+    public Optional<HeatSetpointBody> getBody() {
+        return Optional.of(new HeatSetpointBody(temperature, SetpointMode.TEMPORARY_OVERRIDE, timeUntil));
     }
 
     @Override

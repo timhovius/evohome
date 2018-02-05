@@ -1,10 +1,12 @@
 package com.evohome.thermostat.honeywell.request;
 
-import com.evohome.thermostat.honeywell.body.Body;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 
-public interface Request<T> {
+import java.util.Optional;
+
+public interface Request<R, B> {
 
     String BASE_URL = "https://tccna.honeywell.com/WebApi/emea/api/v1";
 
@@ -12,7 +14,13 @@ public interface Request<T> {
 
     HttpMethod getHttpMethod();
 
-    Body getBody();
+    default HttpHeaders getHeaders() {
+        return new HttpHeaders();
+    }
 
-    ParameterizedTypeReference<T> getResponseClass();
+    default Optional<B> getBody() {
+        return Optional.empty();
+    }
+
+    ParameterizedTypeReference<R> getResponseClass();
 }

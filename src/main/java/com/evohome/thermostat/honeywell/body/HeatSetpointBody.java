@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.ZonedDateTime;
 
-public class HeatSetpointBody implements Body {
+public class HeatSetpointBody {
     private double heatSetpointValue;
     private SetpointMode setpointMode;
     private ZonedDateTime timeUntil;

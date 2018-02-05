@@ -53,14 +53,14 @@ public class ThermostatService {
         );
     }
 
-    private <T> T sendRequest(Request<T> request) throws RestClientException {
+    private <R, B> R sendRequest(Request<R, B> request) throws RestClientException {
         Token token = getToken();
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", token.getTokenType() + " " + token.getAccessToken());
         headers.add("ApplicationId", "b013aa26-9724-4dbd-8897-048b9aada249");
 
-        ResponseEntity<T> responseEntity = restTemplate.exchange(
+        ResponseEntity<R> responseEntity = restTemplate.exchange(
                 request.getUrl(),
                 request.getHttpMethod(),
                 new HttpEntity<>(request.getBody(), headers),

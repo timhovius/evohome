@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum SetpointMode implements Body{
+public enum SetpointMode {
     FOLLOW_SCHEDULE,
     PERMANENT_OVERRIDE,
     TEMPORARY_OVERRIDE;

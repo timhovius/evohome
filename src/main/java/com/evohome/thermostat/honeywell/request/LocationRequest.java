@@ -1,6 +1,5 @@
 package com.evohome.thermostat.honeywell.request;
 
-import com.evohome.thermostat.honeywell.body.Body;
 import com.evohome.thermostat.honeywell.response.Location;
 import com.evohome.thermostat.honeywell.response.UserAccount;
 import org.springframework.core.ParameterizedTypeReference;
@@ -8,7 +7,7 @@ import org.springframework.http.HttpMethod;
 
 import java.util.List;
 
-public class LocationRequest implements Request<List<Location>> {
+public class LocationRequest implements Request<List<Location>, Object> {
     private final UserAccount userAccount;
 
     public LocationRequest(UserAccount userAccount) {
@@ -23,11 +22,6 @@ public class LocationRequest implements Request<List<Location>> {
     @Override
     public HttpMethod getHttpMethod() {
         return HttpMethod.GET;
-    }
-
-    @Override
-    public Body getBody() {
-        return null;
     }
 
     @Override

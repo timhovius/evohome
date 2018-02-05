@@ -1,12 +1,11 @@
 package com.evohome.thermostat.honeywell.request;
 
-import com.evohome.thermostat.honeywell.body.Body;
 import com.evohome.thermostat.honeywell.response.Installation;
 import com.evohome.thermostat.honeywell.response.Location;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 
-public class InstallationRequest implements Request<Installation> {
+public class InstallationRequest implements Request<Installation, Object> {
     private final Location location;
 
     public InstallationRequest(Location location) {
@@ -21,11 +20,6 @@ public class InstallationRequest implements Request<Installation> {
     @Override
     public HttpMethod getHttpMethod() {
         return HttpMethod.GET;
-    }
-
-    @Override
-    public Body getBody() {
-        return null;
     }
 
     @Override
