@@ -5,7 +5,7 @@ import com.evohome.thermostat.honeywell.response.Location;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 
-public class InstallationRequest implements Request<Installation, Object> {
+public class InstallationRequest extends AuthenticatedRequest<Installation, Object> {
     private final Location location;
 
     public InstallationRequest(Location location) {

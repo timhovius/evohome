@@ -10,7 +10,7 @@ import org.springframework.http.HttpMethod;
 import java.time.ZonedDateTime;
 import java.util.Optional;
 
-public class HeatSetpointRequest implements Request<HeatSetpoint, HeatSetpointBody> {
+public class HeatSetpointRequest extends AuthenticatedRequest<HeatSetpoint, HeatSetpointBody> {
     private final Zone zone;
     private final double temperature;
     private final ZonedDateTime timeUntil;

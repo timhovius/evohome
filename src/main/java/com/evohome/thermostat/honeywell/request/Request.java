@@ -14,9 +14,7 @@ public interface Request<R, B> {
 
     HttpMethod getHttpMethod();
 
-    default HttpHeaders getHeaders() {
-        return new HttpHeaders();
-    }
+    HttpHeaders getHeaders();
 
     default Optional<B> getBody() {
         return Optional.empty();

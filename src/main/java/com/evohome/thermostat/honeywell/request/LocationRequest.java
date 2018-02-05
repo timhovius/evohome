@@ -7,7 +7,7 @@ import org.springframework.http.HttpMethod;
 
 import java.util.List;
 
-public class LocationRequest implements Request<List<Location>, Object> {
+public class LocationRequest extends AuthenticatedRequest<List<Location>, Object> {
     private final UserAccount userAccount;
 
     public LocationRequest(UserAccount userAccount) {

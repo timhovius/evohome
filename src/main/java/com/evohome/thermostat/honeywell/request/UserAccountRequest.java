@@ -4,7 +4,7 @@ import com.evohome.thermostat.honeywell.response.UserAccount;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 
-public class UserAccountRequest implements Request<UserAccount, Object> {
+public class UserAccountRequest extends AuthenticatedRequest<UserAccount, Object> {
 
     @Override
     public String getUrl() {
@@ -21,6 +21,4 @@ public class UserAccountRequest implements Request<UserAccount, Object> {
         return new ParameterizedTypeReference<UserAccount>() {
         };
     }
-
-
 }
