@@ -18,7 +18,9 @@ public class ThermostatService {
     private final String username;
     private final String password;
 
-    public ThermostatService(RestTemplate restTemplate, String username, String password) {
+    public ThermostatService(RestTemplate restTemplate,
+                             @Value("${honeywell.evohome.username}") String username,
+                             @Value("${honeywell.evohome.password}") String password) {
         this.restTemplate = restTemplate;
         this.username = username;
         this.password = password;
