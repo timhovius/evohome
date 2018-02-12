@@ -1,29 +1,27 @@
 buildscript {
-	ext {
-		springBootVersion = '1.5.10.RELEASE'
-	}
 	repositories {
 		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
+apply plugin: 'idea'
 
-group = 'com.evohome'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+jar {
+	baseName = 'com.evohome.thermostat'
+	version =  '0.1.0'
+}
 
 repositories {
 	mavenCentral()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile("org.springframework:spring-web:4.3.14.RELEASE")
+	compile("com.fasterxml.jackson.core:jackson-databind:2.9.4")
+	testCompile("junit:junit:4.12")
 }
