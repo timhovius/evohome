@@ -13,19 +13,15 @@ import org.springframework.web.client.RestTemplate;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-@Service
 public class ThermostatService {
     private final RestTemplate restTemplate;
+    private final String username;
+    private final String password;
 
-    @Value("${honeywell.username}")
-    private String username;
-
-    @Value("${honeywell.password}")
-    private String password;
-
-    @Autowired
-    public ThermostatService(RestTemplate restTemplate) {
+    public ThermostatService(RestTemplate restTemplate, String username, String password) {
         this.restTemplate = restTemplate;
+        this.username = username;
+        this.password = password;
     }
 
     private Token getToken() {

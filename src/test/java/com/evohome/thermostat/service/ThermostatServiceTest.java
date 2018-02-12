@@ -1,21 +1,23 @@
 package com.evohome.thermostat.service;
 
 import com.evohome.thermostat.honeywell.response.*;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.ZonedDateTime;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
 public class ThermostatServiceTest {
-
-    @Autowired
     private ThermostatService thermostatService;
+
+    @Before
+    public void setUp() throws Exception {
+        String username = System.getenv("HONEYWELL_EVOHOME_USERNAME");
+        String password = System.getenv("HONEYWELL_EVOHOME_PASSWORD");
+
+        thermostatService = new ThermostatService(new RestTemplate(), username, password);
+    }
 
     @Test
     public void getUserAccount() {
