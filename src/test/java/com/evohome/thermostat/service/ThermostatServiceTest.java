@@ -3,7 +3,6 @@ package com.evohome.thermostat.service;
 import com.evohome.thermostat.honeywell.response.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.web.client.RestTemplate;
 
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -16,7 +15,7 @@ public class ThermostatServiceTest {
         String username = System.getenv("HONEYWELL_EVOHOME_USERNAME");
         String password = System.getenv("HONEYWELL_EVOHOME_PASSWORD");
 
-        thermostatService = new ThermostatService(new RestTemplate(), username, password);
+        thermostatService = new ThermostatService(username, password);
     }
 
     @Test

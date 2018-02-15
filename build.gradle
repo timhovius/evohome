@@ -23,5 +23,6 @@ targetCompatibility = 1.8
 dependencies {
 	compile("org.springframework:spring-web:4.3.14.RELEASE")
 	compile("com.fasterxml.jackson.core:jackson-databind:2.9.4")
+	compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4")
 	testCompile("junit:junit:4.12")
 }

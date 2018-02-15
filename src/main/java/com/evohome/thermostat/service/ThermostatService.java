@@ -2,11 +2,9 @@ package com.evohome.thermostat.service;
 
 import com.evohome.thermostat.honeywell.request.*;
 import com.evohome.thermostat.honeywell.response.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,13 +18,16 @@ public class ThermostatService {
 
     private Token token;
 
-    public ThermostatService(RestTemplate restTemplate,
-                             @Value("${honeywell.evohome.username}") String username,
+    public ThermostatService(@Value("${honeywell.evohome.username}") String username,
                              @Value("${honeywell.evohome.password}") String password) {
-        this.restTemplate = restTemplate;
+        this.restTemplate = getRestTemplate();
         this.username = username;
         this.password = password;
         this.token = getToken();
+    }
+
+    private RestTemplate getRestTemplate() {
+        return new RestTemplate();
     }
 
     private Token getToken() {
