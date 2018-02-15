@@ -33,10 +33,14 @@ public class ThermostatService {
         return sendRequest(new TokenRequest(username, password));
     }
 
-    // TODO refresh token
-    // TODO check for validity
+    private Token refreshToken() {
+        return sendRequest(new RefreshTokenRequest(token));
+    }
+
     private <R, B> R sendAuthenticatedRequest(AuthenticatedRequest<R, B> request) throws RestClientException {
-        Token token = getToken();
+        if (token.isExpired()) {
+            token = refreshToken();
+        }
 
         request.getHeaders().add("Authorization", token.getTokenType() + " " + token.getAccessToken());
         request.getHeaders().add("ApplicationId", "b013aa26-9724-4dbd-8897-048b9aada249");

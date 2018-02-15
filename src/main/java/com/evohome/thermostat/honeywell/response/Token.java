@@ -3,12 +3,15 @@ package com.evohome.thermostat.honeywell.response;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.LocalDateTime;
+
 public class Token extends Response {
     private final String accessToken;
     private final String refreshToken;
     private final String tokenType;
     private final int expiresIn;
     private final String scope;
+    private final LocalDateTime createdAt;
 
     @JsonCreator
     public Token(
@@ -22,6 +25,7 @@ public class Token extends Response {
         this.tokenType = tokenType;
         this.expiresIn = expiresIn;
         this.scope = scope;
+        this.createdAt = LocalDateTime.now();
     }
 
     public String getAccessToken() {
@@ -42,5 +46,9 @@ public class Token extends Response {
 
     public String getScope() {
         return scope;
+    }
+
+    public boolean isExpired() {
+        return !LocalDateTime.now().isBefore(createdAt.plusSeconds(expiresIn));
     }
 }
