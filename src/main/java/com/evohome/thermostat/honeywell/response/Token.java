@@ -7,16 +7,16 @@ public class Token extends Response {
     private final String accessToken;
     private final String refreshToken;
     private final String tokenType;
-    private int expiresIn;
+    private final int expiresIn;
     private final String scope;
 
     @JsonCreator
     public Token(
-            @JsonProperty("access_token") String accessToken,
-            @JsonProperty("refresh_token") String refreshToken,
-            @JsonProperty("token_type") String tokenType,
-            @JsonProperty("expires_in") int expiresIn,
-            @JsonProperty("scope") String scope) {
+            @JsonProperty("access_token") final String accessToken,
+            @JsonProperty("refresh_token") final String refreshToken,
+            @JsonProperty("token_type") final String tokenType,
+            @JsonProperty("expires_in") final int expiresIn,
+            @JsonProperty("scope") final String scope) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
         this.tokenType = tokenType;

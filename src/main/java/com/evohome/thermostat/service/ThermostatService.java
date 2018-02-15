@@ -18,12 +18,15 @@ public class ThermostatService {
     private final String username;
     private final String password;
 
+    private Token token;
+
     public ThermostatService(RestTemplate restTemplate,
                              @Value("${honeywell.evohome.username}") String username,
                              @Value("${honeywell.evohome.password}") String password) {
         this.restTemplate = restTemplate;
         this.username = username;
         this.password = password;
+        this.token = getToken();
     }
 
     private Token getToken() {
