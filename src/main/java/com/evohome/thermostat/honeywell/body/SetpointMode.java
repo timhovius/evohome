@@ -34,6 +34,6 @@ public enum SetpointMode {
                 .filter(entry -> entry.getValue() == setpointMode)
                 .findFirst()
                 .map(Map.Entry::getKey)
-                .orElse(null);
+                .orElseThrow(() -> new IllegalArgumentException("SetpointMode not found"));
     }
 }
