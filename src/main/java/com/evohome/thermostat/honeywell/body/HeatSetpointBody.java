@@ -1,7 +1,6 @@
 package com.evohome.thermostat.honeywell.body;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.ZonedDateTime;
@@ -14,7 +13,7 @@ public class HeatSetpointBody {
     @JsonCreator
     public HeatSetpointBody(@JsonProperty("heatSetpointValue") final double heatSetpointValue,
                             @JsonProperty("setpointMode") final SetpointMode setpointMode,
-                            @JsonProperty("timeUntil") @JsonFormat(pattern = "yyyy-MM-dd'T'hh:mm:ssZ") final ZonedDateTime timeUntil) {
+                            @JsonProperty("timeUntil") final ZonedDateTime timeUntil) {
         this.heatSetpointValue = heatSetpointValue;
         this.setpointMode = setpointMode;
         this.timeUntil = timeUntil;

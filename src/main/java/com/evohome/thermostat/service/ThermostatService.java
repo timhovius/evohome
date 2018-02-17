@@ -1,10 +1,14 @@
 package com.evohome.thermostat.service;
 
+import com.evohome.thermostat.honeywell.jackson.ZonedDateTimeDeserializer;
+import com.evohome.thermostat.honeywell.jackson.ZonedDateTimeSerializer;
 import com.evohome.thermostat.honeywell.request.*;
 import com.evohome.thermostat.honeywell.response.*;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -27,7 +31,22 @@ public class ThermostatService {
     }
 
     private RestTemplate getRestTemplate() {
-        return new RestTemplate();
+        SimpleModule zonedDateTimeModule = new SimpleModule();
+        zonedDateTimeModule.addSerializer(ZonedDateTime.class, new ZonedDateTimeSerializer());
+        zonedDateTimeModule.addDeserializer(ZonedDateTime.class, new ZonedDateTimeDeserializer());
+
+        RestTemplate restTemplate = new RestTemplate();
+        MappingJackson2HttpMessageConverter jackson2HttpMessageConverter = restTemplate
+                .getMessageConverters()
+                .stream()
+                .filter(MappingJackson2HttpMessageConverter.class::isInstance)
+                .map(MappingJackson2HttpMessageConverter.class::cast)
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("MappingJackson2HttpMessageConverter not found"));
+
+        jackson2HttpMessageConverter.getObjectMapper().registerModule(zonedDateTimeModule);
+
+        return restTemplate;
     }
 
     private Token getToken() {
