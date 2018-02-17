@@ -10,7 +10,6 @@ apply plugin: 'idea'
 
 jar {
 	baseName = 'com.evohome.thermostat'
-	version =  '0.1.0'
 }
 
 repositories {
