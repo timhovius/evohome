@@ -24,7 +24,7 @@ Add the dependency
 <dependency>
     <groupId>com.github.timhovius</groupId>
     <artifactId>evohome</artifactId>
-    <version>0.0.1</version>
+    <version>0.1.0</version>
 </dependency>
 ```
 ### Gradle
@@ -43,7 +43,7 @@ Add the dependency
 
 ```groovy
 dependencies {
-    compile 'com.github.timhovius:evohome:0.0.1'
+    compile 'com.github.timhovius:evohome:0.1.0'
 }
 ```
 
