@@ -59,7 +59,8 @@ public class ThermostatService {
 
     private <R, B> R sendAuthenticatedRequest(AuthenticatedRequest<R, B> request) throws RestClientException {
         if (token.isExpired()) {
-            token = refreshToken();
+            // getToken() because refresh token expires after one day(?)
+            token = getToken();
         }
 
         request.getHeaders().add("Authorization", token.getTokenType() + " " + token.getAccessToken());
