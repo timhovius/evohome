@@ -1,4 +1,4 @@
-package com.evohome.thermostat.honeywell.jackson;
+package com.evohome.thermostat.honeywell.formatter;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
@@ -9,10 +9,9 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ZonedDateTimeSerializer extends JsonSerializer<ZonedDateTime> {
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'hh:mm:ssZ");
 
     @Override
     public void serialize(ZonedDateTime value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        gen.writeString(value.format(FORMATTER));
+        gen.writeString(value.format(DateTimeFormatter.ISO_INSTANT));
     }
 }

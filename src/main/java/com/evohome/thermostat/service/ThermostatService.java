@@ -1,7 +1,7 @@
 package com.evohome.thermostat.service;
 
-import com.evohome.thermostat.honeywell.jackson.ZonedDateTimeDeserializer;
-import com.evohome.thermostat.honeywell.jackson.ZonedDateTimeSerializer;
+import com.evohome.thermostat.honeywell.formatter.ZonedDateTimeDeserializer;
+import com.evohome.thermostat.honeywell.formatter.ZonedDateTimeSerializer;
 import com.evohome.thermostat.honeywell.request.*;
 import com.evohome.thermostat.honeywell.response.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
